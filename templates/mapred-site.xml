@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+  <?xml-stylesheet type="text/xsl" href="configuration.xsl"?> 
+  <configuration>
+  <property>
+    <name>mapred.job.tracker</name>
+    <value>MACHINE:54311</value>
+    <description>The host and port that the MapReduce job tracker runs
+    at.  If "local", then jobs are run in-process as a single map
+    and reduce task.
+    </description>
+  </property>
+  <property>
+    <name>mapred.child.java.opts</name>
+    <value>-Xmx4024M</value>
+    <description>Java heap size.
+    </description>
+  </property>
+ <property>
+    <name>mapred.local.dir</name>
+    <value>TMPDIR/hadoop-${user.name}/mapred/local</value>
+    <description>The local directory where MapReduce stores intermediate
+    data files.  May be a comma-separated list of
+    directories on different devices in order to spread disk i/o.
+    Directories that do not exist are ignored.
+    </description>
+  </property>
+  <property>
+    <name>mapred.tasktracker.map.tasks.maximum</name>
+    <value>8</value>
+    <description>The maximum number of map tasks that will be run simultaneously by a task tracker.
+    </description>
+  </property>
+  <property>
+    <name>mapred.tasktracker.reduce.tasks.maximum</name>
+    <value>8</value>
+    <description>The maximum number of reduce tasks that will be run simultaneously by a task tracker.
+    </description>
+  </property>
+<property>
+    <name>mapreduce.reduce.shuffle.parallelcopies</name>
+	<value>5</value>
+	<description>The default number of parallel transfers run by reduce during the copy(shuffle) phase.
+    </description>
+</property>
+
+<property>
+  <name>mapred.reduce.tasks.speculative.execution</name>
+  <value>true</value>
+  <description>If true, then multiple instances of some reduce tasks
+               may be executed in parallel.</description>
+</property>
+</configuration>
+
