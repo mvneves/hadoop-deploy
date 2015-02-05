@@ -9,11 +9,12 @@ then
 fi
 name=$1
 
-HADOOP_INSTALL_SCRIPTS=$( cd $(dirname $0) ; pwd -P )
+dir=$( cd $(dirname $0) ; pwd -P )
+HADOOP_INSTALL_SCRIPTS=$dir/..
 
 source $HADOOP_INSTALL_SCRIPTS/INSTALL.config
-source $HADOOP_INSTALL_SCRIPTS/functions/hadoop.sh
-source $HADOOP_INSTALL_SCRIPTS/functions/logs.sh
+source $HADOOP_INSTALL_SCRIPTS/bin/functions/hadoop.sh
+source $HADOOP_INSTALL_SCRIPTS/bin/functions/logs.sh
 
 # Load Hadoop environment variables
 source $HADOOP_INSTALL_ENV

@@ -5,7 +5,8 @@
 # Marcelo Veiga Neves <marcelo.veiga@gmail.com>
 #
 
-HADOOP_INSTALL_SCRIPTS=$( cd $(dirname $0) ; pwd -P )
+dir=$( cd $(dirname $0) ; pwd -P )
+HADOOP_INSTALL_SCRIPTS=$dir/..
 
 source $HADOOP_INSTALL_SCRIPTS/INSTALL.config
 
@@ -30,7 +31,7 @@ then
 	fi
 fi
 
-source $HADOOP_INSTALL_SCRIPTS/functions/pbs_utils.sh
+source $HADOOP_INSTALL_SCRIPTS/bin/functions/pbs_utils.sh
 
 slaves=`cat ./machines.txt | sort | uniq`
 

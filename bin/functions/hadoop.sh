@@ -1,7 +1,15 @@
-HADOOP_INSTALL_SCRIPTS=$( cd $(dirname $0) ; pwd -P )
+#!/bin/bash
+# Helper functions to configure/install/uninstall Hadoop daemons
+#
+# Marcelo Veiga Neves <marcelo.veiga@gmail.com>
+#
+
+dir=$( cd $(dirname $0) ; pwd -P )
+HADOOP_INSTALL_SCRIPTS=$dir/..
+
 source $HADOOP_INSTALL_SCRIPTS/INSTALL.config
-source $HADOOP_INSTALL_SCRIPTS/functions/pbs_utils.sh
-source $HADOOP_INSTALL_SCRIPTS/functions/network.sh
+source $HADOOP_INSTALL_SCRIPTS/bin/functions/pbs_utils.sh
+source $HADOOP_INSTALL_SCRIPTS/bin/functions/network.sh
 
 HADOOP_BASE="$HADOOP_INSTALL_DEST/hadoop-$USER"
 HADOOP_HOME="$HADOOP_BASE/hadoop"
@@ -231,7 +239,7 @@ cleanup_tmp()
 	for node in $slaves
 	do
 		echo $node
-		ssh $node $HADOOP_INSTALL_SCRIPTS/functions/killall.sh 2>/dev/null
+		ssh $node $HADOOP_INSTALL_SCRIPTS/bin/functions/killall.sh 2>/dev/null
 		echo "Removing $HADOOP_BASE ..."
 		ssh $node rm -r $HADOOP_BASE 2>/dev/null
 		echo "Removing tmp files ..."

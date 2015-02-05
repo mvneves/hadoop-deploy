@@ -4,15 +4,23 @@
 # Marcelo Veiga Neves <marcelo.veiga@gmail.com>
 #
 
-HADOOP_INSTALL_SCRIPTS=$( cd $(dirname $0) ; pwd -P )
+dir=$( cd $(dirname $0) ; pwd -P )
+HADOOP_INSTALL_SCRIPTS=$dir/..
 
 # Load script configuration file
 source $HADOOP_INSTALL_SCRIPTS/INSTALL.config
-source $HADOOP_INSTALL_SCRIPTS/functions/hadoop.sh
+source $HADOOP_INSTALL_SCRIPTS/bin/functions/hadoop.sh
 
 if [ -e "$HADOOP_INSTALL_ENV" ]
 then
 	echo "Previous Hadoop installation found."
+	exit
+fi
+
+if [ ! -e "$HADOOP_INSTALL_SCRIPTS/tmp/slaves" ]
+then
+	echo "Cluster configuration files not found."
+	echo "You must run hadoop-discovery-cluster first."
 	exit
 fi
 
